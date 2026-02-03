@@ -1,55 +1,63 @@
-/* RANDOM STUDENTS KATA:  */
+/* CALCULATOR KATA */
 
-// Who will be gatekeeper and keymaster today?
+/* This is best done with a JS switch control, though can also be a chain of conditionals. */
 
-/* Function Main()
- * Display random gatekeeper name and keymaster name for this kata
- * @param = none
- * @return = none
+/* FUNCTION main() 
+ * Perform basic arithmetic as a calculator
+ * @param: none (main never gets params)
+ * @return: none (main never gets returns)
  */
 function main(){
- let count = prompt("How many students are in class today?");
- let students = addStudents(count);
- console.log(students);
- let gateKeeper = randStudent(students);
- let keyMaster = randNewStudent(students, gateKeeper); 
- alert(gateKeeper + " is a gatekeeper and " + keyMaster + " is a keyMaster.");
-}
-/* Function addStudents(count) 
- * Enters a set number of students to an array.
- * @param = count {integer}
- * @return = students {array}
- */
-function addStudents(count){
- let students = []; 
- for(var i = 1; i<=count; i++){
-   students.push(prompt("Student " + i + ":"));  
- }
-return students;
-}
-/* Function randStudent(students)
- * This picks a random student from an array. 
- * @param = students {array}
- * @return = gateKeeper {string}
- */
-function randStudent(students){
-    let student = Math.floor(Math.random() * students.length);
-    let gateKeeper = students[student];
-    return gateKeeper;
-}
-/* Function randNewStudent(students, gateKeeper) 
- * This picks a student who was not already picked. 
- * @param = students {array}, gateKeeper {string}
- * @return = keyMaster {string}
- */
-function randNewStudent(students, gateKeeper){
-    let keyMaster;
-    let student;
-    let picked = false;
-    while(picked == false){
-        student = Math.floor(Math.random() * students.length);
-        keyMaster = students[student];
-        if (keyMaster != gateKeeper) picked = true;
+    let result;
+    let operation = prompt("What operation do you want? +, -, *, /");
+    let a = parseInt(prompt("Enter the first number."));
+    let b = parseInt(prompt("Enter the second number."));
+    if (operation == "+"){
+          result =add(a,b);
     }
-    return keyMaster;
+    else if (operation == "-")  result =subtract(a,b);
+    else if (operation == "*")  result =muiltiply(a,b);
+    else {
+          result =divide(a,b);
+    }
+    alert(a + operation + b + "=" + result);
+}
+ // Ask the user what operation they want (+, -, *, /)
+ // Ask the user for the first number (a)
+ // Parse a as an integer
+ // Ask the user for the second number (b)
+ // Parse b as an integer
+ // Based on the operation, send the numbers to the right function as arguments 
+ // store the returned value in variable called result
+ // Alert the equation a + operation + b = result
+
+/* FUNCTION add(a,b)
+ * define a function called add with two number parameters a and b
+ * @param: a, b (integers)
+ * @return: a + b
+ */
+function add(a,b){
+return a+b;
+}
+/* FUNCTION subtract(a,b)
+ * define a function called subtract with two number parameters a and b
+ * @param: a, b (integers)
+ * @return: a - b
+ */
+
+/* FUNCTION multiply(a,b)
+ * define a function called multiply with two number parameters a and b
+ * @param: a, b (integers)
+ * @return: a * b (* means multiply)
+ */
+function add(a,b){
+return a+b;
+}
+/* FUNCTION divide(a,b)
+ * define a function called divide with two number parameters a and b
+ * @param: a, b (integers)
+ * @return: a / b (/ means divided by)
+ */
+function add(a,b){
+return a+b;
 }
