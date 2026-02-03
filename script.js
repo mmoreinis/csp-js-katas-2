@@ -7,42 +7,49 @@
  * @param = none
  * @return = none
  */
- // Initialize count as prompt asking how many students there are.
- // Initialize array students equal to addStudents with argument count
- // Initialize gateKeeper = randStudent(students), the name of a random student in the list
- // Initialize keyMaster = randNewStudent(students, student), name of a different random student
- // Display gatekeeper name and keymaster name for this kata
-
+function main(){
+ let count = prompt("How many students are in class today?");
+ let students = addStudents(count);
+ console.log(students);
+ let gateKeeper = randStudent(students);
+ let keyMaster = randNewStudent(students, gateKeeper); 
+ alert(gateKeeper + " is a gatekeeper and " + keyMaster + " is a keyMaster.");
+}
 /* Function addStudents(count) 
  * Enters a set number of students to an array.
  * @param = count {integer}
  * @return = students {array}
  */
- // Initialize an array called students. 
- // Define for loop to run count times starting at 1
- // Push each student name into the array via user input ("student 1:")
- // Return the students array
-
+function addStudents(count){
+ let students = []; 
+ for(var i = 1; i<=count; i++){
+   students.push(prompt("Student " + i + ":"));  
+ }
+return students;
+}
 /* Function randStudent(students)
  * This picks a random student from an array. 
  * @param = students {array}
  * @return = gateKeeper {string}
  */
- // Initialize student as a random number, 0 to < length of students array.
- // Initialize gateKeeper as the element in students array at that random index.
- // Return gateKeeper
-
+function randStudent(students){
+    let student = Math.floor(Math.random() * students.length);
+    let gateKeeper = students[student];
+    return gateKeeper;
+}
 /* Function randNewStudent(students, gateKeeper) 
  * This picks a student who was not already picked. 
  * @param = students {array}, gateKeeper {string}
  * @return = keyMaster {string}
  */
- // Initialize keyMaster as "none"
- // Initialize picked as false
- // Initialize student
- // Define loop, run while picked equals false
- // Set student as random index number, 0 to < length of students array.
- // Set keyMaster as element in students array at random index student
- // If keyMaster is not equal to gateKeeper, set picked equal to true
- // End the while loop.
- // Return keyMaster
+function randNewStudent(students, gateKeeper){
+    let keyMaster;
+    let student;
+    let picked = false;
+    while(picked == false){
+        student = Math.floor(Math.random() * students.length);
+        keyMaster = students[student];
+        if (keyMaster != gateKeeper) picked = true;
+    }
+    return keyMaster;
+}
